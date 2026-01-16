@@ -1,10 +1,12 @@
 {
   "name": "interia",
   "version": "1.0.0",
+  "type": "module",
   "description": "Interia is a motion-first UI system for modern web, focused on intentional, restrained interaction design. It treats motion as a functional part of interface behavior, not decoration,  ensuring every transition, state change and response serves a purpose.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +15,7 @@
     "lit": "^3.3.2"
   },
   "devDependencies": {
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1"
   }
 }
