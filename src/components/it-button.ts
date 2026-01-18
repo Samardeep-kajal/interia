@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit";
+import "../styles/motion.css";
 
 export class ItButton extends LitElement {
   static styles = css`
@@ -12,7 +13,10 @@ export class ItButton extends LitElement {
       background: #3b6ef6;
       color: white;
 
-      transition: transform 150ms ease, box-shadow 150ms ease;
+      transition:
+        transform var(--it-motion-duration-fast) var(--it-motion-ease-standard),
+        background-color var(--it-motion-duration-fast)
+          var(--it-motion-ease-standard);
     }
 
     button:hover {
@@ -21,7 +25,7 @@ export class ItButton extends LitElement {
     }
 
     button:active {
-      transform: translateY(0);
+      transform: scale(var(--it-motion-scale-press));
       box-shadow: none;
     }
   `;
