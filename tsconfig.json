@@ -5,6 +5,7 @@
     "moduleResolution": "Bundler",
     "lib": ["DOM", "ES2020"],
 
+    "experimentalDecorators": true,
     "strict": true,
     "useDefineForClassFields": false,
     "skipLibCheck": true,

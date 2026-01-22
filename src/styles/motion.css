@@ -7,3 +7,20 @@
 
   --it-motion-scale-press: 0.98;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  button {
+    transform: none;
+  }
+
+  button:active {
+    transform: none;
+  }
+  :root {
+    --it-motion-duration-fast: 0ms;
+    --it-motion-duration-medium: 0ms;
+    --it-motion-duration-slow: 0ms;
+
+    --it-motion-scale-press: 1;
+  }
+}

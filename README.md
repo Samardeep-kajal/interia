@@ -27,3 +27,35 @@ Most UI libraries treat animation as:
 - Web Components – framework-agnostic by design
 
 Interia components work across frameworks (React, Vue, plain HTML).
+
+## Philosophy
+
+- Motion should communicate affordance, not decoration.
+- Disabled or unavailable states should no animate.
+- Accessibility and reduced-motion preferences are respected by default.
+- Consistency matters more than expressiveness.
+
+### Example by Component
+
+#### `it-button`
+
+A foundational component with restrained motion and accessible defaults.
+
+#### Usage
+
+```
+<it-button>Primary Action</it-button>
+<it-button disabled>Disabled Action</it-button>
+```
+
+#### Behavior Expected
+
+- Hover and press feedback using motion tokens
+- Disabled state removes all motion and interaction afforance.
+
+## Status
+
+Interia is currently in early development (v0.1).
+APIs may evolve as the system expands.
+
+Contribution and feedback are welcome.
