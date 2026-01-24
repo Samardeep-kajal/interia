@@ -4,18 +4,12 @@
   --it-motion-duration-slow: 260ms;
 
   --it-motion-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --it-motion-ease-emphasized: cubic-bezier(0.3, 0, 0, 1);
 
   --it-motion-scale-press: 0.98;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  button {
-    transform: none;
-  }
-
-  button:active {
-    transform: none;
-  }
   :root {
     --it-motion-duration-fast: 0ms;
     --it-motion-duration-medium: 0ms;
