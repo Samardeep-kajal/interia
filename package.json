@@ -21,8 +21,9 @@
     "dist"
   ],
   "scripts": {
+    "dev": "npx vite demo",
     "build": "tsup",
-    "dev": "tsup --watch",
+    "build:watch": "tsup --watch",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "lint": "eslint src",
