@@ -1,0 +1,20 @@
+:root {
+  --it-font-sans: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --it-text-sm: 0.875rem;
+  --it-text-md: 1rem;
+  --it-text-lg: 1.125rem;
+
+  --it-text-height-sm: 1.4;
+  --it-text-height-md: 1.6;
+  --it-text-height-lg: 1.8;
+
+  --it-weight-regular: 400;
+  --it-weight-medium: 500;
+  --it-weight-semibold: 600;
+  --it-weight-bold: 700;
+
+  --it-text-on-light: #0f172a;
+  --it-text-on-dark: #e5e7eb;
+  --it-color-text-muted: #475569;
+}
