@@ -31,7 +31,6 @@ export class ItButton extends LitElement {
 
     button:hover:not(:disabled) {
       background: var(--it-color-primary-hover);
-      transform: translateY(-1px);
     }
 
     button:active:not(:disabled) {
@@ -48,13 +47,6 @@ export class ItButton extends LitElement {
       opacity: 0.6;
       cursor: not-allowed;
       transform: none;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      button {
-        transition: none;
-        transform: none;
-      }
     }
   `;
 

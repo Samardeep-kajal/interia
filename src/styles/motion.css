@@ -5,6 +5,7 @@
 
   --it-motion-ease-standard: cubic-bezier(0.2, 0, 0, 1);
   --it-motion-ease-emphasized: cubic-bezier(0.3, 0, 0, 1);
+  --it-motion-ease-decelarate: cubic-bezier(0, 0, 0.2, 1);
 
   --it-motion-scale-press: 0.98;
 }
