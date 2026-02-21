@@ -22,11 +22,10 @@
   --it-radius-md: 10px;
 
   /* Spacing */
-  --it-spacing-sm: 8px;
-  --it-space-md: 12px;
-  --it-space-3: 12px;
-  --it-space-4: 16px;
-  --it-space-5: 20px;
+  --it-space-xs: 4px;
+  --it-space-sm: 8px;
+  --it-space-md: 16px;
+  --it-space-lg: 24px;
 
   /* Typography */
   --it-font-size-base: 1rem;
