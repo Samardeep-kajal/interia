@@ -27,10 +27,17 @@
     <it-text>This is some sample text using the it-text component.</it-text>
     <it-text variant="muted">Muted text</it-text>
     <it-text variant="strong">Strong text</it-text>
-    <br><br>
+    <br /><br />
     <it-heading level="1">Interia Heading</it-heading>
     <it-heading level="2">Section Title</it-heading>
     <it-heading level="3">Subsection</it-heading>
+
+    <br /><br />
+
+    <div>
+      <it-toggle id="demo-toggle"></it-toggle>
+      <span id="demo-toggle-label">Off</span>
+    </div>
 
     <it-card>
   <span slot="header">Card Header</span>
@@ -45,7 +52,19 @@
   <p>This card has the elevated prop — shadow visible at rest.</p>
   <span slot="footer">Footer action</span>
 </it-card>
-    
+
+    <script>
+      const toggle = document.getElementById("demo-toggle");
+      const label = document.getElementById("demo-toggle-label");
+
+      if (toggle && label) {
+        toggle.addEventListener("change", (event) => {
+          const checked = event.detail?.checked;
+          label.textContent = checked ? "On" : "Off";
+        });
+      }
+    </script>
+
     <script type="module" src="/main.ts"></script>
   </body>
 </html>

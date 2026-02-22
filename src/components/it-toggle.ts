@@ -1,0 +1,112 @@
+import { LitElement, html, css } from "lit";
+import "../styles/motion.css";
+import "../styles/visual.css";
+import { customElement, property } from "lit/decorators.js";
+
+@customElement("it-toggle")
+export class ItToggle extends LitElement {
+  @property({ type: Boolean, reflect: true })
+  checked = false;
+
+  static styles = css`
+    :host {
+      display: inline-block;
+    }
+
+    .control {
+      display: inline-flex;
+      align-items: center;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .track {
+      position: relative;
+      box-sizing: border-box;
+      width: 40px;
+      height: 22px;
+      border-radius: 999px;
+      background-color: var(--it-color-border);
+      padding: 2px;
+      transition:
+        background-color var(--it-motion-duration-fast)
+          var(--it-motion-ease-standard);
+    }
+
+    .thumb {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background-color: var(--it-color-neutral-0);
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.35);
+      transform: translateX(0);
+      transition:
+        transform var(--it-motion-duration-fast)
+          var(--it-motion-ease-standard),
+        box-shadow var(--it-motion-duration-fast)
+          var(--it-motion-ease-standard);
+    }
+
+    :host([checked]) .track {
+      background-color: var(--it-color-primary);
+    }
+
+    :host([checked]) .thumb {
+      transform: translateX(18px);
+    }
+
+    .control:focus-visible {
+      outline: none;
+    }
+
+    .control:focus-visible .track {
+      box-shadow: 0 0 0 3px var(--it-color-focus-ring);
+    }
+  `;
+
+  private toggleChecked() {
+    const next = !this.checked;
+    this.checked = next;
+
+    this.dispatchEvent(
+      new CustomEvent("change", {
+        detail: { checked: next },
+        bubbles: true,
+        composed: true,
+      }),
+    );
+  }
+
+  private handleClick(e: MouseEvent) {
+    e.preventDefault();
+    this.toggleChecked();
+  }
+
+  private handleKeyDown(e: KeyboardEvent) {
+    if (e.key === " " || e.code === "Space" || e.key === "Spacebar") {
+      e.preventDefault();
+      this.toggleChecked();
+    }
+  }
+
+  render() {
+    return html`
+      <div
+        class="control"
+        role="switch"
+        aria-checked=${this.checked ? "true" : "false"}
+        tabindex="0"
+        @click=${this.handleClick}
+        @keydown=${this.handleKeyDown}
+      >
+        <div class="track">
+          <div class="thumb"></div>
+        </div>
+      </div>
+    `;
+  }
+}
+
