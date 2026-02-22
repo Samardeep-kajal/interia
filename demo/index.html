@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <title>Interia Demo</title>
 
-    <!-- Import your library entry -->
     <script type="module">
       import "../src/index.ts";
     </script>
@@ -12,57 +11,123 @@
     <style>
       body {
         font-family: system-ui, sans-serif;
-        padding: 3rem;
-        background: #ffffff;
+        margin: 0;
+        min-height: 100vh;
+        padding: var(--it-space-lg);
+        background: #f1f5f9;
         color: var(--it-text-on-light);
+        box-sizing: border-box;
+      }
+
+      .scene {
+        max-width: 420px;
+        margin: 0 auto;
+      }
+
+      /* Override motion in this scope to show token override works */
+      .scene {
+        --it-motion-duration-fast: 180ms;
+      }
+
+      it-card {
+        width: 100%;
+      }
+
+      .setting-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--it-space-md);
+        padding: var(--it-space-sm) 0;
+      }
+
+      .setting-row:not(:last-child) {
+        border-bottom: 1px solid var(--it-color-border);
+      }
+
+      .setting-label {
+        flex: 1;
+      }
+
+      .setting-label strong {
+        display: block;
+        margin-bottom: 2px;
+      }
+
+      .setting-label span {
+        font-size: 0.875rem;
+        color: var(--it-color-text-muted);
+      }
+
+      .footer-actions {
+        display: flex;
+        justify-content: flex-end;
+        padding-top: var(--it-space-xs);
       }
     </style>
   </head>
   <body>
-    <h1>Interia</h1>
-    <p>Motion with Intent.</p>
+    <div class="scene">
+      <it-card>
+        <span slot="header">
+          <it-heading level="2">Notifications</it-heading>
+        </span>
 
-    <it-button>Primary Button</it-button>
-    <br></br>
-    <it-text>This is some sample text using the it-text component.</it-text>
-    <it-text variant="muted">Muted text</it-text>
-    <it-text variant="strong">Strong text</it-text>
-    <br /><br />
-    <it-heading level="1">Interia Heading</it-heading>
-    <it-heading level="2">Section Title</it-heading>
-    <it-heading level="3">Subsection</it-heading>
+        <it-text variant="muted" style="display: block; margin-bottom: var(--it-space-md);">
+          Choose how you want to be notified. You can change these anytime.
+        </it-text>
 
-    <br /><br />
+        <div class="setting-row">
+          <div class="setting-label">
+            <strong>Email updates</strong>
+            <span>Receive product and account emails</span>
+          </div>
+          <it-toggle id="toggle-email" aria-label="Email updates"></it-toggle>
+        </div>
 
-    <div>
-      <it-toggle id="demo-toggle"></it-toggle>
-      <span id="demo-toggle-label">Off</span>
+        <div class="setting-row">
+          <div class="setting-label">
+            <strong>Push notifications</strong>
+            <span>Get notified in your browser</span>
+          </div>
+          <it-toggle id="toggle-push" aria-label="Push notifications"></it-toggle>
+        </div>
+
+        <div slot="footer" class="footer-actions">
+          <it-button id="save-btn">Save changes</it-button>
+        </div>
+      </it-card>
     </div>
 
-    <it-card>
-  <span slot="header">Card Header</span>
-  <p>This is the body content of the card. Add anything here.</p>
-  <span slot="footer">Footer action</span>
-</it-card>
-
-<br><br>
-
-<it-card elevated>
-  <span slot="header">Elevated Card</span>
-  <p>This card has the elevated prop — shadow visible at rest.</p>
-  <span slot="footer">Footer action</span>
-</it-card>
-
     <script>
-      const toggle = document.getElementById("demo-toggle");
-      const label = document.getElementById("demo-toggle-label");
+      (function () {
+        var saveBtn = document.getElementById("save-btn");
+        var emailToggle = document.getElementById("toggle-email");
+        var pushToggle = document.getElementById("toggle-push");
 
-      if (toggle && label) {
-        toggle.addEventListener("change", (event) => {
-          const checked = event.detail?.checked;
-          label.textContent = checked ? "On" : "Off";
-        });
-      }
+        if (saveBtn) {
+          saveBtn.addEventListener("click", function () {
+            var label = saveBtn.textContent;
+            saveBtn.textContent = "Saved";
+            saveBtn.disabled = true;
+            setTimeout(function () {
+              saveBtn.textContent = label;
+              saveBtn.disabled = false;
+            }, 1500);
+          });
+        }
+
+        if (emailToggle) {
+          emailToggle.addEventListener("change", function (e) {
+            console.log("Email updates:", e.detail.checked);
+          });
+        }
+        if (pushToggle) {
+          pushToggle.addEventListener("change", function (e) {
+            console.log("Push notifications:", e.detail.checked);
+          });
+        }
+      })();
     </script>
 
     <script type="module" src="/main.ts"></script>
