@@ -13,7 +13,7 @@ export class ItText extends LitElement {
     :host {
       font-family: var(--it-font-sans);
       font-size: var(--it-text-md);
-      line-height: var(--it-line-height-body);
+      line-height: var(--it-leading-md);
       color: var(--it-text-on-light);
       font-weight: var(--it-weight-regular);
     }

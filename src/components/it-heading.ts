@@ -1,5 +1,6 @@
 import { LitElement, html, css } from "lit";
 import { customElement, property } from "lit/decorators.js";
+import "../styles/typography.css";
 
 @customElement("it-heading")
 export class ItHeading extends LitElement {
@@ -13,19 +14,19 @@ export class ItHeading extends LitElement {
     }
 
     h1 {
-      fontsize: var(--it-heading-h1);
+      font-size: var(--it-heading-h1);
       line-height: var(--it-heading-leading-h1);
     }
     h2 {
-      fontsize: var(--it-heading-h2);
+      font-size: var(--it-heading-h2);
       line-height: var(--it-heading-leading-h2);
     }
     h3 {
-      fontsize: var(--it-heading-h3);
+      font-size: var(--it-heading-h3);
       line-height: var(--it-heading-leading-h3);
     }
     h4 {
-      fontsize: var(--it-heading-h4);
+      font-size: var(--it-heading-h4);
       line-height: var(--it-heading-leading-h4);
     }
   `;
