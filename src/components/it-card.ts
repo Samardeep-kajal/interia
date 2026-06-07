@@ -1,6 +1,5 @@
 import { LitElement, html, css } from "lit";
-import "../styles/motion.css";
-import "../styles/visual.css";
+import "../styles/tokens.css";
 import { customElement, property } from "lit/decorators.js";
 
 @customElement("it-card")
@@ -25,7 +24,9 @@ export class ItCard extends LitElement {
     }
 
     .card {
-      border-radius: 16px;
+      background-color: var(--it-color-surface);
+      border: 1px solid var(--it-color-border);
+      border-radius: var(--it-radius-lg);
       overflow: hidden;
       box-shadow: none;
       transition: box-shadow var(--it-motion-duration-fast)
@@ -33,23 +34,23 @@ export class ItCard extends LitElement {
     }
 
     :host([elevated]) .card {
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
 
     .card:hover {
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
     }
 
     .header {
-      padding: 16px 20px 0;
+      padding: var(--it-space-md) var(--it-space-md-lg) 0;
     }
 
     .body {
-      padding: 16px 20px;
+      padding: var(--it-space-md) var(--it-space-md-lg);
     }
 
     .footer {
-      padding: 0 20px 16px;
+      padding: 0 var(--it-space-md-lg) var(--it-space-md);
     }
   `;
 

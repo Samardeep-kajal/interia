@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import "../styles/typography.css";
+import "../styles/tokens.css";
 
 @customElement("it-heading")
 export class ItHeading extends LitElement {

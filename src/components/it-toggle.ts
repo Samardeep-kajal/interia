@@ -1,6 +1,5 @@
 import { LitElement, html, css } from "lit";
-import "../styles/motion.css";
-import "../styles/visual.css";
+import "../styles/tokens.css";
 import { customElement, property } from "lit/decorators.js";
 
 @customElement("it-toggle")

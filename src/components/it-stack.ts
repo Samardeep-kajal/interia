@@ -1,5 +1,6 @@
 import { LitElement, html, css } from "lit";
 import { customElement, property } from "lit/decorators.js";
+import "../styles/tokens.css";
 
 @customElement("it-stack")
 export class ItStack extends LitElement {
@@ -13,7 +14,7 @@ export class ItStack extends LitElement {
       display: flex;
     }
 
-    :host ([direction = "vertical"]) {
+    :host([direction="vertical"]) {
       flex-direction: column;
     }
 

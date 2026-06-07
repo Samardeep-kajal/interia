@@ -1,6 +1,5 @@
 import { LitElement, html, css } from "lit";
-import "../styles/motion.css";
-import "../styles/visual.css";
+import "../styles/tokens.css";
 import { customElement, property } from "lit/decorators.js";
 
 @customElement("it-button")
@@ -16,7 +15,7 @@ export class ItButton extends LitElement {
     button {
       font: inherit;
       padding: 10px 18px;
-      border-radius: 10px;
+      border-radius: var(--it-radius-md);
       border: none;
       cursor: pointer;
 
