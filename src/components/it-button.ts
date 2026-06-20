@@ -1,7 +1,13 @@
 import { LitElement, html, css } from "lit";
 import "../styles/tokens.css";
 import { customElement, property } from "lit/decorators.js";
-import { logMotionTransition } from "../utils/motion-debugger";
+import {
+  logMotionTransition,
+  createMotionOverlay,
+  showMotionOverlay,
+  hideMotionOverlay,
+  destroyMotionOverlay,
+} from "../utils/motion-debugger";
 
 @customElement("it-button")
 export class ItButton extends LitElement {
@@ -12,6 +18,26 @@ export class ItButton extends LitElement {
   debugMotion = false;
 
   private _currentState = "idle";
+  private _debugOverlay: HTMLElement | null = null;
+
+  /**
+   * Lazily creates the debug overlay inside the Shadow DOM the first time
+   * it is needed. This avoids any DOM cost when debug-motion is not set.
+   */
+  private getOrCreateOverlay(): HTMLElement {
+    if (!this._debugOverlay) {
+      this._debugOverlay = createMotionOverlay();
+    }
+    return this._debugOverlay;
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    if (this._debugOverlay) {
+      destroyMotionOverlay(this._debugOverlay);
+      this._debugOverlay = null;
+    }
+  }
 
   private updateState(nextState: string) {
     if (this._currentState === nextState) return;
@@ -26,6 +52,18 @@ export class ItButton extends LitElement {
         "--it-motion-ease-standard",
         ["background-color", "transform"]
       );
+      const overlay = this.getOrCreateOverlay();
+      if (nextState !== "idle") {
+        showMotionOverlay(
+          overlay,
+          this,
+          nextState,
+          "--it-motion-duration-fast",
+          "--it-motion-ease-standard"
+        );
+      } else {
+        hideMotionOverlay(overlay);
+      }
     }
   }
 
@@ -57,6 +95,7 @@ export class ItButton extends LitElement {
   static styles = css`
     :host {
       display: inline-block;
+      position: relative; /* anchors the absolutely-positioned debug overlay */
     }
 
     button {
